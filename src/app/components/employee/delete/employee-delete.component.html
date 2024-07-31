@@ -1,0 +1,14 @@
+<ng-template #tpEmployeeDelete>
+	<div class="modal-header">
+    <h4 class="modal-title"> Delete Employee  ID: {{ employee.id }} </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()"></button>
+  </div>
+  <div class="modal-body">
+    You confirm deleting the employee {{ employee.firstName }}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()" >Close</button>
+    <button type="button" class="btn btn-danger" (click)="save()"> <i class="bi bi-x-circle" ></i> Delete </button>
+  </div>
+</ng-template>
+  

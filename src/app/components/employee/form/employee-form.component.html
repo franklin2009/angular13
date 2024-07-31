@@ -1,0 +1,35 @@
+<ng-template #tpEmployeeForm>
+	<div class="modal-header">
+    <h4 class="modal-title"> {{ action === 'new' ? 'New' : 'Edit' }} Employee  {{ action === 'edit' ? ' ID: ' + employee.id : '' }} </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()"></button>
+  </div>
+  <div class="modal-body">
+  
+    <form novalidate autocomplete="off"  #employeeForm="ngForm">
+      <div class="form-group">
+        <label for="firstName">First Name *</label>
+        <input type="text" class="form-control" id="firstName" placeholder="Enter first name" name="firstName" required  [(ngModel)]="employee.firstName" #firstName="ngModel" />
+        <span [hidden]="firstName.valid || firstName.pristine"  class="text-danger small float-right">  First name required</span>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name *</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Enter last name" name="lastName" required  [(ngModel)]="employee.lastName" #lastName="ngModel" />
+        <span [hidden]="lastName.valid || lastName.pristine"  class="text-danger small float-right">  Last name required</span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required  [(ngModel)]="employee.email" #email="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+        <span [hidden]="email.valid || email.pristine"  class="text-danger small float-right">  Email required, format **@**.** </span>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="number" class="form-control" id="phone" placeholder="Enter phone" name="phone"   [(ngModel)]="employee.phone" #phone="ngModel" />
+      </div>
+    </form>
+  
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()" >Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()"  [disabled]="!employeeForm.form.valid"> Save </button>
+  </div>  
+</ng-template>

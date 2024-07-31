@@ -1,0 +1,43 @@
+<div class="container">
+
+    <div class="my-4">
+      <img src="assets/img/employee.png" class="w-100 rounded my-1"/>
+      <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary" (click)="modalForm()" >New Employee</button>
+            <button type="button" class="btn btn-secondary"   (click)="loadData()"> Load Data</button>
+            
+      </div>
+    </div>
+    <h2>Employee Table  <span class="badge badge-info">{{ employeeTable.length }}</span> </h2>      
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of employeeTable">
+          <td>{{item.id}}</td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.phone}}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="modalForm(item)"> <i class="bi bi-pencil"></i> </button>
+            <button type="button" class="btn btn-danger" (click)="modalDelete(item)"> <i class="bi bi-trash"></i> </button> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+</div>
+
+<app-employee-form [showModal]="showModalForm" (saveForm)="saveForm($event)"></app-employee-form>
+<app-employee-delete [showModal]="showModalDelete" (saveDelete)="saveDelete($event)"></app-employee-delete>
+
+<app-loading [showLoad]="isLoad"></app-loading>

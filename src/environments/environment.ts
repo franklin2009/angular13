@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl:'https://raw.githubusercontent.com/franklin2009/angularjs/main/employees.json',
+  expired:600 //seg
 };
 
 /*
